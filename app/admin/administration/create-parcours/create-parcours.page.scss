@@ -1,0 +1,25 @@
+ion-input[name="photo"]{
+    position: absolute;
+    float: left;
+    margin-left: 80px;
+}
+
+ion-col{
+    border: 1px solid #aaaaaa;
+}
+
+ion-card{
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+}
+
+ion-buttons {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ion-input[name="numberPoint"]{
+    text-align: center;
+    vertical-align: middle;
+}

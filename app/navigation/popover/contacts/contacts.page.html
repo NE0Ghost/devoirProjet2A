@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+    <ion-title>Contacts</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-list>
+    <ion-item>
+        <ion-card>
+            <ion-card-content>
+                <ion-card-title>Telephone</ion-card-title>
+                <ion-card-subtitle *ngFor="let tel of telephone">{{ tel.numero }}</ion-card-subtitle>
+            </ion-card-content>
+        </ion-card>
+    </ion-item>
+    <ion-item>
+        <ion-card>
+            <ion-card-content>
+                <ion-card-title>Email</ion-card-title>
+                <ion-card-subtitle *ngFor="let email of emails">{{ email.mail }}</ion-card-subtitle>
+            </ion-card-content>
+        </ion-card>
+    </ion-item>
+</ion-list>
+</ion-content>

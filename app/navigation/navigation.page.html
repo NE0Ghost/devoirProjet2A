@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Rodez Visite App</ion-title>
+    <ion-button color="light" slot="end" (click)="OpenPopover($event)">
+        <ion-icon name="more"></ion-icon>
+    </ion-button>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="directionForm" (ngSubmit)="calculateAndDisplayRoute(directionForm.value)">
+        <ion-item>
+            <ion-label position="floating">Destination</ion-label>
+            <ion-input formControlName="destination"></ion-input>
+        </ion-item>
+        <ion-button expand="full" type="submit" [disabled]="!directionForm.valid">Get Direction</ion-button>
+    </form>
+    
+    <div #map class="map"></div>
+</ion-content>

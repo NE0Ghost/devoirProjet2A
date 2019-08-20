@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/admin"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Administration</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-list-header>
+            <h2>Point d'interet</h2>
+        </ion-list-header>
+        <ion-item button *ngFor="let point of points | async" [routerLink]="['/create-point', point.id]">
+            {{ point.title }}
+        </ion-item>
+
+        <ion-item button [routerLink]="['/create-point']">
+            Creer un point
+        </ion-item>
+    </ion-list>
+    <ion-list>
+        <ion-list-header>
+            <h2>Parcours</h2>
+        </ion-list-header>
+        <ion-item button *ngFor="let parcour of parcours | async" [routerLink]="['/create-parcours', parcour.id]">
+            <ion-label>
+                {{ parcour.title }}
+            </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-item button [routerLink]="['/create-parcours']">
+                Creer un parcours
+            </ion-item>
+        </ion-item>
+    </ion-list>
+</ion-content>

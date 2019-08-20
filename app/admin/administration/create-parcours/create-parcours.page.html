@@ -1,0 +1,72 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/administration"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Creation de parcours</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form>
+        <ion-item>
+            <ion-input [(ngModel)]="parcours.title" type="text" name="titre" placeholder="Titre"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input [(ngModel)]="parcours.description" type="text" name="description" placeholder="Description">
+            </ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-title>Photo:</ion-title>
+            <ion-input type="file" accept="image/*" name="photo"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-title>Points de passage du parcours</ion-title>
+        </ion-item>
+        <ion-item>
+            <ion-grid>
+                <ion-row>
+                    <ion-col size=2>Ordre</ion-col>
+                    <ion-col>Titre du point</ion-col>
+                </ion-row>
+                <ion-row *ngFor="let pis of parcours.pis">
+                    <ion-col size=2>
+                        <ion-input type="number" style="text-align: center;" disabled [name]="'numberPoint'+pis.ordre" [(ngModel)]="pis.ordre"></ion-input>
+                    </ion-col>
+                    <ion-col size-xl>{{pis.point.title}}</ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col style="text-align: center;">
+                        <ion-button color="primary" (click)="showPointList()">ADD POINT</ion-button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+    </form>
+    <ion-footer *ngIf="!parcours.id">
+        <ion-toolbar color="success">
+            <ion-button expand="full" fill="clear" color="light" (click)="addParcours()">
+                <ion-icon name="checkmark" slot="start"></ion-icon>
+                Creer Parcours
+            </ion-button>
+        </ion-toolbar>
+    </ion-footer>
+
+
+    <ion-footer *ngIf="parcours.id">
+        <ion-row no-padding text-center>
+            <ion-col size="6">
+                <ion-button expand="block" fill="outline" color="danger" (click)="deleteParcours()">
+                    <ion-icon name="trash" slot="start"></ion-icon>
+                    Delete
+                </ion-button>
+            </ion-col>
+            <ion-col size="6">
+                <ion-button expand="block" fill="solid" color="success" (click)="updateParcours()">
+                    <ion-icon name="save" slot="start"></ion-icon>
+                    Update
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-footer>
+</ion-content>

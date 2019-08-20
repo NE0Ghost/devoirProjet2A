@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Parcours disponibles</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-item *ngFor="let parcour of parcours | async">
+            <ion-card>
+                <ion-card-content no-padding>
+                    <ion-card-title>{{ parcour.title }}</ion-card-title>
+                    <!-- <ion-card-subtitle>Type: {{parcour.type }}</ion-card-subtitle> -->
+                    <ion-grid no-padding>
+                        <ion-row no-padding>
+                            <ion-col>
+                                <ion-card-subtitle>Place a voir:</ion-card-subtitle>
+                                <p *ngFor="let pi of parcour.pis">- {{ pi.point.title }}</p>
+                            </ion-col>
+                            <ion-col no padding>
+                                <ion-button (click)="doParcour(parcour)" float-right>
+                                    Faire
+                                    <ion-icon name="arrow-forward" end></ion-icon>
+                                </ion-button>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-card-content>
+            </ion-card>
+        </ion-item>
+    </ion-list>
+</ion-content>
